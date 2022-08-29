@@ -3,6 +3,7 @@ import numpy as np
 import seaborn as sns 
 from bs4 import BeautifulSoup
 import requests
+import re
 
 j =1
 names_text = []
@@ -10,6 +11,7 @@ localisations_text = []
 prices_text = []
 prices = []
 area = []
+areas = []
 rooms = []
 
 while True:
@@ -25,13 +27,19 @@ while True:
     names_text.append(list(name.text for name in names))
     
     localisations = soup.find_all("p",class_="css-p6wsjo-Text eu5v0x0")
-    localisations_text.append(list(localisation.text for localisation in localisations))
+    localisations_text.append(list(localisation.text.split(",")[1].split("-") for localisation in localisations))
+    localisations_text = [item[0] for sublist in localisations_text for item in sublist]
+    
     
     prices = soup.find_all("p",class_="css-wpfvmn-Text eu5v0x0")
-    prices_text.append(list(price.text for price in prices))
+    prices_text.append(list(re.findall('[0-9]+', str(price.text)) for price in prices))
+    prices_text = [int("".join(substring)) for sublist in prices_text for substring in sublist ]
     
     area = soup.find_all("p",class_="css-1bhbxl1-Text eu5v0x0")
-    print(names_text)
+    areas.append(list(area.text for area in area))
+    areas = [float(area.replace("m²", "").replace(",",".").strip()) for area in areas[0]]
+    print(areas)
+    break
     j+=1
 
 
