@@ -40,9 +40,8 @@ while True:
     prices_text.append(list("".join(substring) for sublist in prices_text_temp for substring in sublist ))
     
     area = soup.find_all("p",class_="css-1bhbxl1-Text eu5v0x0")
-    areas_temp = [area.text for area in area]
-    areas.append(list(area.replace("m²", "").replace(",",".").strip()) for area in areas_temp)
-    print(areas)
+    areas = [float(area.text.replace("m²", "").replace(",",".").strip()) for area in area]
+    
     # print(len(names_text[0]),len(localisations_text[0]),len(prices_text),len(areas[0]))
     j+=1
    
