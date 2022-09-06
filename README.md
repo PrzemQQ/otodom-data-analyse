@@ -1,6 +1,6 @@
 # Otodom & OLX rentals offers in  Wrocław analysis - Explorary Data Analysis 
 ## 🟡 Steps 🟡
-<h3> <center> 0. Prerequirements </center> </h3>
+<h3> <center><u>  0. Prerequirements </u> </center> </h3>
 <h3> 1. Scraping data from services </h3>
 <h3> 2. Cleaning data </h3>
 <h3> 3. Changing missing values </h3>
