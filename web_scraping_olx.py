@@ -42,9 +42,8 @@ while True:
     area = soup.find_all("p",class_="css-1bhbxl1-Text eu5v0x0") #area of the offer
     areas.append([(area.text.replace("m²", "").replace(",",".").strip()) for area in area])
     
-    print(len(names_text[0]),len(localisations_text),len(prices_text[0]),len(areas))
     j+=1
-    print(localisations_text)
+    
    
     
 def flatten_data(tab):
